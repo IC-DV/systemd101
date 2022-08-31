@@ -1,0 +1,62 @@
+Script started on 2022-08-30 00:30:14+00:00
+]0;vagrant@localhost:~[vagrant@localhost ~]$ cat ;e[K[K/etc/sysconfig/watchlog 
+WORD="ALERT"
+LOG=/var/log/watchlog.log
+
+]0;vagrant@localhost:~[vagrant@localhost ~]$ cat /var/log/watchlog.log 
+some log ALERT
+]0;vagrant@localhost:~[vagrant@localhost ~]$ cat /opt/watchlog.sh 
+#!/bin/bash
+
+WORD=$1
+LOG=$2
+DATE=`date`
+
+if grep $WORD $LOG &> /dev/null
+then 
+   logger "$DATE:some log, bruh"
+else
+   exit 0
+fi
+]0;vagrant@localhost:~[vagrant@localhost ~]$ cat /etc/systemd/system/watchlog.service 
+[Unit]
+Description=watchlog
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/sysconfig/watchlog
+ExecStart=/opt/watchlog.sh $WORD $LOG
+]0;vagrant@localhost:~[vagrant@localhost ~]$ cat /etc/systemd/system/watchlog.service [K[K[K[K[K[K[K[Ktimer 
+[Unit]
+Description=runnin watchlog service every minute
+
+[Timer]
+OnUnitActiveSec=60
+Unit=watchlog.service
+
+[Install]
+WantedBy=multi-user.target
+]0;vagrant@localhost:~[vagrant@localhost ~]$ systemctl status watchlog.timer 
+[?1h=[0;1;32m●[0m watchlog.timer - runnin watchlog service every minute[m
+   Loaded: loaded (/etc/systemd/system/watchlog.timer; disabled; vendor preset[m[7m>[27m
+   Active: [0;1;32mactive (elapsed)[0m since Tue 2022-08-30 00:28:55 UTC; 2min 50s ago[m
+  Trigger: n/a[m
+[7mlines 1-4/4 (END)[27m[K[K[?1l>]0;vagrant@localhost:~[vagrant@localhost ~]$ tail -f /var/log/messages 
+tail: cannot open '/var/log/messages' for reading: Permission denied
+tail: no files remaining
+]0;vagrant@localhost:~[vagrant@localhost ~]$ tail -f /var/log/messages [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@s[1@u[1@d[1@o[1@ 
+Aug 30 00:22:55 localhost dbus-daemon[619]: [system] Successfully activated service 'org.freedesktop.nm_dispatcher'
+Aug 30 00:22:55 localhost systemd[1]: Started Network Manager Script Dispatcher Service.
+Aug 30 00:23:05 localhost systemd[1]: NetworkManager-dispatcher.service: Succeeded.
+Aug 30 00:27:55 localhost NetworkManager[623]: <info>  [1661819275.8561] dhcp4 (eth1): state changed extended -> extended, address=192.168.56.114
+Aug 30 00:27:55 localhost dbus-daemon[619]: [system] Activating via systemd: service name='org.freedesktop.nm_dispatcher' unit='dbus-org.freedesktop.nm-dispatcher.service' requested by ':1.4' (uid=0 pid=623 comm="/usr/sbin/NetworkManager --no-daemon " label="system_u:system_r:NetworkManager_t:s0")
+Aug 30 00:27:55 localhost systemd[1]: Starting Network Manager Script Dispatcher Service...
+Aug 30 00:27:55 localhost dbus-daemon[619]: [system] Successfully activated service 'org.freedesktop.nm_dispatcher'
+Aug 30 00:27:55 localhost systemd[1]: Started Network Manager Script Dispatcher Service.
+Aug 30 00:28:05 localhost systemd[1]: NetworkManager-dispatcher.service: Succeeded.
+Aug 30 00:28:55 localhost systemd[1]: Started runnin watchlog service every minute.
+q ^C
+]0;vagrant@localhost:~[vagrant@localhost ~]$ sudo tail -f /var/log/messages [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[5P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6@systemctl status watchlog.timer[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7@cat /etc/systemd/system/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[2@service[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[20Popt/watchlog.sh[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kexit
+exit
+
+Script done on 2022-08-30 00:32:24+00:00

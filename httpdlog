@@ -1,0 +1,77 @@
+Script started on 2022-08-30 01:54:03+00:00
+]0;vagrant@localhost:/home/vagrant[root@localhost vagrant]# cat /etc/conf[K[K[K[Ksysconfig/ht
+htcacheclean  httpd-first   httpd-second  
+[root@localhost vagrant]# cat /etc/sysconfig/httpd-first 
+OPTIONS=-f /etc/httpd/conf/first.conf
+
+]0;vagrant@localhost:/home/vagrant[root@localhost vagrant]# cat /etc/sysconfig/httpd-first [K[K[K[K[K[Ksecond
+OPTIONS=-f /etc/httpd/conf/second.conf
+
+]0;vagrant@localhost:/home/vagrant[root@localhost vagrant]# cat /etc/sysconfig/httpd-second[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Khttpd/conf/first.conf | grep L[K"L[K[K"L[K[K[K [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kexit
+exit
+
+Script done on 2022-08-30 01:55:35+00:00
+Script started on 2022-08-30 01:56:32+00:00
+]0;vagrant@localhost:/home/vagrant[root@localhost vagrant]# exitcat /etc/sysconfig/httpd-secondfirst second[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Khttpd/conf/first.conf | grep "Listen"
+# [01;31m[KListen[m[K: Allows you to bind Apache to specific IP addresses and/or
+# Change this to [01;31m[KListen[m[K on specific IP addresses as shown below to 
+#[01;31m[KListen[m[K 12.34.56.78:80
+[01;31m[KListen[m[K 8080
+]0;vagrant@localhost:/home/vagrant[root@localhost vagrant]# cat /etc/httpd/conf/first.conf | grep "Listen"[C[C[C[C[1P[1P[1P[1P[1P[1@s[1@e[1@c[1@o[1@n[1@d
+# [01;31m[KListen[m[K: Allows you to bind Apache to specific IP addresses and/or
+# Change this to [01;31m[KListen[m[K on specific IP addresses as shown below to 
+#[01;31m[KListen[m[K 12.34.56.78:80
+[01;31m[KListen[m[K 80
+]0;vagrant@localhost:/home/vagrant[root@localhost vagrant]# cat /etc/httpd/conf/second.conf | grep "Listen"[1Pfirst[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Kcat /etc/sysconfig/httpd-secondfirst [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Ksystemctl status spawn-fcgi.service [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7@cat /etc/systemd/system/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[13Pconfig/spawn-fcgi[C[13@temd/system/spawn-fcgi.service[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7Psystemctl status [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Kcat /etc/sysconfig/httpd-first second[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Kcat /etc/httpd/conf/first.conf | grep "Listen"[1@second[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kcat /etc/httpd/conf/second.conf | grep "Listen"[1Pfirst[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@second[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kcat /etc/httpd/conf/second.conf | grep "Listen"[1Pfirst[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Kcat /etc/sysconfig/httpd-secondfirst secondfirst [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Ksystemctl status spawn-fcgi.service [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7@cat /etc/systemd/system/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7Psystemctl status [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7@cat /etc/systemd/system/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[13Pconfig/spawn-fcgi[C[13@temd/system/spawn-fcgi.service[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7Psystemctl status [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Kcat /etc/sysconfig/httpd-first second[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Kcat /etc/httpd/conf/first.conf | grep "Listen"[1@second[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ksystemctl status httpd@first
+[?1h=[0;1;32m●[0m httpd@first.service - The Apache HTTP Server[m
+   Loaded: loaded (/usr/lib/systemd/system/httpd@.service; disabled; vendor pr[m[7m>[27m
+   Active: [0;1;32mactive (running)[0m since Tue 2022-08-30 01:45:29 UTC; 12min ago[m
+     Docs: man:httpd@.service(8)[m
+  Process: 24384 ExecStartPre=/bin/chown root.apache /run/httpd/instance-first[m[7m>[27m
+  Process: 24383 ExecStartPre=/bin/mkdir -m 710 -p /run/httpd/instance-first ([m[7m>[27m
+ Main PID: 24386 (httpd)[m
+   Status: "Running, listening on: port 8080"[m
+    Tasks: 214 (limit: 12427)[m
+   Memory: 28.6M[m
+   CGroup: /system.slice/system-httpd.slice/httpd@first.service[m
+           ├─24386 /usr/sbin/httpd -DFOREGROUND -f conf/first.conf[m
+           ├─24388 /usr/sbin/httpd -DFOREGROUND -f conf/first.conf[m
+           ├─24389 /usr/sbin/httpd -DFOREGROUND -f conf/first.conf[m
+           ├─24390 /usr/sbin/httpd -DFOREGROUND -f conf/first.conf[m
+           ├─24391 /usr/sbin/httpd -DFOREGROUND -f conf/first.conf[m
+           └─24392 /usr/sbin/httpd -DFOREGROUND -f conf/first.conf[m
+[m
+Aug 30 01:45:29 localhost.localdomain systemd[1]: Starting The Apache HTTP Ser[m[7m>[27m
+Aug 30 01:45:29 localhost.localdomain httpd[24386]: AH00558: httpd: Could not [m[7m>[27m
+Aug 30 01:45:29 localhost.localdomain systemd[1]: Started The Apache HTTP Serv[m[7m>[27m
+Aug 30 01:45:29 localhost.localdomain httpd[24386]: Server configured, listeni[m[7m>[27m
+[7mlines 1-22/22 (END)[27m[K[K[?1l>]0;vagrant@localhost:/home/vagrant[root@localhost vagrant]# systemctl status httpd@first[K[K[K[K[Ksecond
+[?1h=[0;1;32m●[0m httpd@second.service - The Apache HTTP Server[m
+   Loaded: loaded (/usr/lib/systemd/system/httpd@.service; disabled; vendor pr[m[7m>[27m
+   Active: [0;1;32mactive (running)[0m since Tue 2022-08-30 01:56:22 UTC; 1min 28s ago[m
+     Docs: man:httpd@.service(8)[m
+  Process: 24811 ExecStartPre=/bin/chown root.apache /run/httpd/instance-secon[m[7m>[27m
+  Process: 24810 ExecStartPre=/bin/mkdir -m 710 -p /run/httpd/instance-second [m[7m>[27m
+ Main PID: 24813 (httpd)[m
+   Status: "Running, listening on: port 80"[m
+    Tasks: 214 (limit: 12427)[m
+   Memory: 26.7M[m
+   CGroup: /system.slice/system-httpd.slice/httpd@second.service[m
+           ├─24813 /usr/sbin/httpd -DFOREGROUND -f conf/second.conf[m
+           ├─24815 /usr/sbin/httpd -DFOREGROUND -f conf/second.conf[m
+           ├─24816 /usr/sbin/httpd -DFOREGROUND -f conf/second.conf[m
+           ├─24817 /usr/sbin/httpd -DFOREGROUND -f conf/second.conf[m
+           ├─24818 /usr/sbin/httpd -DFOREGROUND -f conf/second.conf[m
+           └─24819 /usr/sbin/httpd -DFOREGROUND -f conf/second.conf[m
+[m
+Aug 30 01:56:22 localhost.localdomain systemd[1]: Starting The Apache HTTP Ser[m[7m>[27m
+Aug 30 01:56:22 localhost.localdomain httpd[24813]: AH00558: httpd: Could not [m[7m>[27m
+Aug 30 01:56:22 localhost.localdomain systemd[1]: Started The Apache HTTP Serv[m[7m>[27m
+Aug 30 01:56:22 localhost.localdomain httpd[24813]: Server configured, listeni[m[7m>[27m
+[7mlines 1-22/22 (END)[27m[K[K[?1l>]0;vagrant@localhost:/home/vagrant[root@localhost vagrant]# systemctl status httpd@second[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kss -tnulp | grep httpd
+tcp   LISTEN 0      128                *:80              *:*    users:(("[01;31m[Khttpd[m[K",pid=24819,fd=4),("[01;31m[Khttpd[m[K",pid=24818,fd=4),("[01;31m[Khttpd[m[K",pid=24817,fd=4),("[01;31m[Khttpd[m[K",pid=24816,fd=4),("[01;31m[Khttpd[m[K",pid=24813,fd=4))
+tcp   LISTEN 0      128                *:8080            *:*    users:(("[01;31m[Khttpd[m[K",pid=24392,fd=4),("[01;31m[Khttpd[m[K",pid=24391,fd=4),("[01;31m[Khttpd[m[K",pid=24390,fd=4),("[01;31m[Khttpd[m[K",pid=24389,fd=4),("[01;31m[Khttpd[m[K",pid=24386,fd=4))
+]0;vagrant@localhost:/home/vagrant[root@localhost vagrant]# exit
+exit
+
+Script done on 2022-08-30 01:58:30+00:00

@@ -1,0 +1,58 @@
+Script started on 2022-08-30 00:42:11+00:00
+]0;vagrant@localhost:/home/vagrant[root@localhost vagrant]# cat /etc/sysconfig/spawn-fcgi 
+# You must set some working options before the "spawn-fcgi" service will work.
+# If SOCKET points to a file, then this file is cleaned up by the init script.
+#
+# See spawn-fcgi(1) for all possible options.
+#
+# Example :
+SOCKET=/var/run/php-fcgi.sock
+OPTIONS="-u apache -g apache -s $SOCKET -S -M 0600 -C 32 -F 1 -P /var/run/spawn-fcgi.pid -- /usr/bin/php-cgi"
+
+]0;vagrant@localhost:/home/vagrant[root@localhost vagrant]# cat /etc/systemd/system/spawn-fcgi.service 
+[Unit]
+Description=Spawn-fcgi startup service
+After=network.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/spawn-fcgi.pid
+EnvironmentFile=/etc/sysconfig/spawn-fcgi
+ExecStart=/usr/bin/spawn-fcgi -n $OPTIONS
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+]0;vagrant@localhost:/home/vagrant[root@localhost vagrant]# systemctl status spawn-fcgi.service 
+[?1h=[0;1;32m●[0m spawn-fcgi.service - Spawn-fcgi startup service[m
+   Loaded: loaded (/etc/systemd/system/spawn-fcgi.service; disabled; vendor pr[m[7m>[27m
+   Active: [0;1;32mactive (running)[0m since Tue 2022-08-30 00:41:18 UTC; 1min 37s ago[m
+ Main PID: 22398 (php-cgi)[m
+    Tasks: 33 (limit: 12427)[m
+   Memory: 18.6M[m
+   CGroup: /system.slice/spawn-fcgi.service[m
+           ├─22398 /usr/bin/php-cgi[m
+           ├─22399 /usr/bin/php-cgi[m
+           ├─22400 /usr/bin/php-cgi[m
+           ├─22401 /usr/bin/php-cgi[m
+           ├─22402 /usr/bin/php-cgi[m
+           ├─22403 /usr/bin/php-cgi[m
+           ├─22404 /usr/bin/php-cgi[m
+           ├─22405 /usr/bin/php-cgi[m
+           ├─22406 /usr/bin/php-cgi[m
+           ├─22407 /usr/bin/php-cgi[m
+           ├─22408 /usr/bin/php-cgi[m
+           ├─22409 /usr/bin/php-cgi[m
+           ├─22410 /usr/bin/php-cgi[m
+           ├─22411 /usr/bin/php-cgi[m
+           ├─22412 /usr/bin/php-cgi[m
+           ├─22413 /usr/bin/php-cgi[m
+           ├─22414 /usr/bin/php-cgi[m
+           ├─22415 /usr/bin/php-cgi[m
+           ├─22416 /usr/bin/php-cgi[m
+           ├─22417 /usr/bin/php-cgi[m
+           ├─22418 /usr/bin/php-cgi[m
+[7mlines 1-28[27m[K[K [KESCESC[Kqq[K[7mlines 1-28[27m[K[K [KESCESC[Kqq[K[7mlines 1-28[27m[K[K[?1l>]0;vagrant@localhost:/home/vagrant[root@localhost vagrant]# exit
+exit
+
+Script done on 2022-08-30 00:43:05+00:00
