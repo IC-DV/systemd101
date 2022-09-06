@@ -19,13 +19,11 @@ config.vm.define "server" do |server|
     vb.memory = "2048"
 #    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 #    vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
-  end
-
-
-#  server.vm.provision "shell",
-#    name: "configuration",
-#    path: "init.sh"
-  end
+  end	
+  server.vm.provision "shell", path: "watchlog.sh"
+  server.vm.provision "shell", path: "spawnfcgi.sh"
+  server.vm.provision "shell", path: "apache.sh"      
+end
 
 
 #  config.vm.define "client" do |client|
